@@ -30,25 +30,30 @@ int main(int argc, char **argv) {
     while ((c = getopt_long(argc, argv, "f:l:s:", long_options, &option_index)) != -1) {
         switch (c) {
             case 0:
-                printf("Using option %s", long_options[option_index].name);
+//                printf("Using option %s", long_options[option_index].name);
+                printf("%s is ", long_options[option_index].name);
                 if (optarg)
-                    printf(" with arg %s", optarg);
+//                    printf(" with arg %s", optarg);
+                    printf("\"%s\"", optarg);
                 printf("\n");
                 break;
 
             case 'f':
-                printf("Using option --file with value %s\n", optarg);
+//                printf("Using option --file with value %s\n", optarg);
+                printf("file is \"%s\"\n", optarg);
                 strcpy(file_path, optarg);
                 break;
 
             case 'l':
-                printf("Using option --files with value %s\n", optarg);
+//                printf("Using option --files with value %s\n", optarg);
+                printf("files is \"%s\"\n", optarg);
                 file_list = 1;
                 strcpy(file_list_path, optarg);
                 break;
 
             case 's':
-                printf("Using option --state with value %s\n", optarg);
+//                printf("Using option --state with value %s\n", optarg);
+                printf("state is \"%s\"\n", optarg);
                 if (strcmp(optarg, "ASYNC") == 0)
                     call_method = 'a';
                 else if (strcmp(optarg, "SYNC") == 0)
@@ -57,13 +62,15 @@ int main(int argc, char **argv) {
                     printf("Unexpected state value\n");
                 break;
 
-            case 'm':
-                printf("Using option --sms_size with value %s\n", optarg);
-                tinyfile_set_shm_size(strtol(optarg, &ptr, 10));
-                break;
+//            case 'm':
+////                printf("Using option --sms_size with value %s\n", optarg);
+//                printf("sms_size is \"%s\"\n", optarg);
+//                tinyfile_set_shm_size(strtol(optarg, &ptr, 10));
+//                break;
 
             default:
-                printf("Required options (--file or --files), --state, --sms_size");
+//                printf("Required options (--file or --files), --state");
+                printf("./sample_app --file(s) FILE --state (A)SYNC\n");
                 abort();
         }
     }
