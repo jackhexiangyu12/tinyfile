@@ -7,8 +7,8 @@ include_directories(utils/)
 
 # API Library
 add_library(tinyfile
-        src/api/api.c
-        utils/tinyfile/api.h
+        library.c
+        utils/tinyfile/library.h
         utils/tinyfile/types.h)
 
 target_link_libraries(tinyfile rt pthread)

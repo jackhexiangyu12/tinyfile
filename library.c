@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #include "tinyfile/params.h"
-#include "tinyfile/api.h"
+#include "tinyfile/library.h"
 #include "tinyfile/messages.h"
 
 /* Global registry queue */

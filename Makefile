@@ -34,8 +34,8 @@ $(SERVER): $(OBJDIR)/tinyfile_server.o | $(BINDIR)
 $(OBJDIR)/client.o: $(LIB) client.c | $(OBJDIR)
 	$(CC) $(CCFLAGS) $(INCLUDES) client.c -o $@
 
-$(OBJDIR)/tinyfile_api.o: $(SRCDIR)/api/api.c $(INCDIR)/tinyfile/api.h | $(OBJDIR)
-	$(CC) $(CCFLAGS) $(INCLUDES) $(SRCDIR)/api/api.c -o $@ $(LIBS)
+$(OBJDIR)/tinyfile_api.o: $(LIB) library.c $(INCDIR)/tinyfile/library.h | $(OBJDIR)
+	$(CC) $(CCFLAGS) $(INCLUDES) $(LIB) library.c -o $@ $(LIBS)
 
 $(OBJDIR)/tinyfile_server.o: $(LIB) server.c $(INCDIR)/tinyfile/server.h | $(OBJDIR)
 	$(CC) $(CCFLAGS) $(INCLUDES) $(LIB) server.c -o $@
