@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(utils/)
 
 # API Library
-add_executable(tinyfile
-        library.c
+add_library(tinyfile
+        library.cs
         utils/tinyfile/library.h
         utils/tinyfile/types.h)
 

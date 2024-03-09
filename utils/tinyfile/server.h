@@ -71,6 +71,6 @@ void exit_server();
 /* Server API functions */
 int compress_s(tinyfile_arg_t *arg);
 
-void handle_request(tinyfile_request_t *req, client_t *client);
+void deal_request(tinyfile_request_t *req, client_t *client);
 
 #endif // TINYFILE_SERVER_H

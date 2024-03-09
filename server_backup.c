@@ -100,7 +100,7 @@ int compress_s(tinyfile_arg_t *arg) {
     return 0;
 }
 
-void handle_request(tinyfile_request_t *req, client_t *client) {
+void deal_request(tinyfile_request_t *req, client_t *client) {
     tinyfile_shared_entry_t *shared_entry = (tinyfile_shared_entry_t *) (client->shm_addr +
                                                                          req->entry_idx *
                                                                          sizeof(tinyfile_shared_entry_t));

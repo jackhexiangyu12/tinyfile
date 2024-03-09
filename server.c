@@ -95,7 +95,7 @@ int compress_s(tinyfile_arg_t *arg) {
     return 0;
 }
 
-void handle_request(tinyfile_request_t *req, client_t *client) {
+void deal_request(tinyfile_request_t *req, client_t *client) {
     tinyfile_shared_entry_t *shared_entry = (tinyfile_shared_entry_t *) (client->shm_addr +
                                                                          req->entry_idx *
                                                                          sizeof(tinyfile_shared_entry_t));
@@ -143,7 +143,7 @@ void *service_worker(void *data) {
                 client->num_requests_started++;
                 pthread_mutex_unlock(&client->threads_mutex);
 
-                handle_request(request, client);
+                deal_request(request, client);
 
                 pthread_mutex_lock(&client->threads_mutex);
                 client->num_requests_completed++;
@@ -162,15 +162,11 @@ void open_shm(tinyfile_registry_entry_t *registry_entry, client_t *client) {
         fprintf(stderr, "ERROR: shm_open() failed\n");
         exit(EXIT_FAILURE);
     }
-
     memcpy(client->shm_name, registry_entry->shm_name, 100);
-
     struct stat s;
     fstat(fd, &s);
     client->shm_size = (size_t) s.st_size;
-
     client->shm_addr = mmap(NULL, client->shm_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-
     close(fd);
 }
 
