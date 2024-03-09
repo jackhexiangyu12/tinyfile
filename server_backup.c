@@ -1,12 +1,15 @@
 #include <sys/mman.h>
-#include <ftw.h>
 #include <string.h>
+#include <ftw.h>
 #include <errno.h>
-#include <tinyfile/server.h>
+
+#include <snappy-c/snappy.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <snappy-c/snappy.h>
+
+
 #include <tinyfile/params.h>
+#include <tinyfile/server.h>
 
 
 mqd_t global_registry;
