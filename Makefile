@@ -30,14 +30,14 @@ $(CLIENT): $(OBJDIR)/client.o | $(BINDIR)
 $(SERVER): $(OBJDIR)/tinyfile_server.o | $(BINDIR)
 	$(CC) utils/snappy-c/snappy.c $^ -o $@ $(LIBS)
 
-$(OBJDIR)/client.o: $(LIB) client.c | $(OBJDIR)
+$(OBJDIR)/client.o:  client.c | $(OBJDIR)
 	$(CC) $(CCFLAGS) $(INCLUDES) client.c -o $@
 
-$(OBJDIR)/tinyfile_api.o: $(LIB) library.c utils/tinyfile/library.h | $(OBJDIR)
-	$(CC) $(CCFLAGS) $(INCLUDES) $(LIB) library.c -o $@ $(LIBS)
+$(OBJDIR)/tinyfile_api.o:  library.c utils/tinyfile/library.h | $(OBJDIR)
+	$(CC) $(CCFLAGS) $(INCLUDES) library.c -o $@ $(LIBS)
 
 $(OBJDIR)/tinyfile_server.o: $(LIB) server.c utils/tinyfile/server.h | $(OBJDIR)
-	$(CC) $(CCFLAGS) $(INCLUDES) $(LIB) server.c -o $@
+	$(CC) $(CCFLAGS) $(INCLUDES) server.c -o $@
 
 $(BINDIR):
 	mkdir -p $@
