@@ -438,13 +438,13 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv) 
     char input[2];
 
 //    printf("Server initialized. Press q to quit.\n");
-    printf("Server Running.If you want to quit press ctrl+z\n");
+    printf("Server Running. If you want to quit press ctrl+z\n");
 
     while (input[0] != 'q') fgets(input, 2, stdin);
 
     exit_server();
 
-    printf("Server exited.\n");
+    printf("Server quit.\n");
 
     return 0;
 }
