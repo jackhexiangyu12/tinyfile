@@ -142,9 +142,6 @@ int main(int argc, char **argv) {
         diff_msec = diff.tv_sec * 1000 + (long) (diff.tv_nsec / 1000000.0);
 
         printf("CST is %ld ms\n", diff_msec);
-//         printf("Compressed files:\n");
-//         for (j = 0; j < lines; ++j)
-//            printf("%s\n", out[j].compressed_file_path);
         printf("Compressed files are in the same directory as the source files\n");
     } else {
         /* Single file compression request. */
