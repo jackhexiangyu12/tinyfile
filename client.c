@@ -170,12 +170,7 @@ int main(int argc, char **argv) {
         diff.tv_nsec = ts2.tv_nsec - ts1.tv_nsec;
         diff_msec = diff.tv_sec * 1000 + (long) (diff.tv_nsec / 1000000.0);
 
-//        if (call_method == 'a')
-//            printf("Time to perform single async request: %ld millisecs.\n", diff_msec);
-//        else
-//            printf("Time to perform single sync requests: %ld millisecs.\n", diff_msec);
-//
-//        printf("Compressed file: %s\n", out.compressed_file_path);
+
         printf("CST is %ld ms\n", diff_msec);
         printf("Compressed file is in the same directory as the source file\n");
     }
