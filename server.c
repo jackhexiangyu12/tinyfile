@@ -383,7 +383,6 @@ static void *registry_handler(__attribute__((unused)) void *p) {
                 fprintf(stderr, "ERROR: Unknown registry command from client %d\n", registry_entry->pid);
         }
     }
-
     return NULL;
 }
 
