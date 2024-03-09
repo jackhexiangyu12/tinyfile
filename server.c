@@ -372,12 +372,14 @@ static void *registry_handler(__attribute__((unused)) void *p) {
         switch (registry_entry->cmd) {
             case TINYFILE_CLIENT_REGISTER:
                 register_client(registry_entry);
-                printf("Client %d registered\n", registry_entry->pid);
+                printf("Received request from client %d\n", registry_entry->pid);
+//                printf("Client %d registered\n", registry_entry->pid);
                 break;
             case TINYFILE_CLIENT_UNREGISTER:
             case TINYFILE_CLIENT_CLOSE:
                 unregister_client(registry_entry->pid, 0);
-                printf("Client %d unregistered\n", registry_entry->pid);
+                printf("Received close request from client %d\n", registry_entry->pid);
+//                printf("Client %d unregistered\n", registry_entry->pid);
                 break;
             default:
                 fprintf(stderr, "ERROR: Unknown registry command from client %d\n", registry_entry->pid);
@@ -434,7 +436,8 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv) 
 
     char input[2];
 
-    printf("Server initialized. Press q to quit.\n");
+//    printf("Server initialized. Press q to quit.\n");
+    printf("Server Running.If you want to quit press ctrl+z\n");
 
     while (input[0] != 'q') fgets(input, 2, stdin);
 
