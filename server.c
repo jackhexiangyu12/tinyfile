@@ -331,7 +331,8 @@ int unregister_client(int pid, int close) {
         tinyfile_registry_entry_t registry_entry;
         registry_entry.cmd = TINYFILE_SERVER_CLOSE;
         if (mq_send(client->send_q, (char *) &registry_entry, sizeof(registry_entry), 1)) {
-            fprintf(stderr, "ERROR: Error in mq_send() during unregister_client() to client %d\n", pid);
+//            fprintf(stderr, "ERROR: Error in mq_send() during unregister_client() to client %d\n", pid);
+            fprintf(stderr,"Error");
         }
     }
 
