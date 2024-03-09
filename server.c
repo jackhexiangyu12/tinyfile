@@ -331,7 +331,6 @@ int unregister_client(int pid, int close) {
         tinyfile_registry_entry_t registry_entry;
         registry_entry.cmd = TINYFILE_SERVER_CLOSE;
         if (mq_send(client->send_q, (char *) &registry_entry, sizeof(registry_entry), 1)) {
-//            fprintf(stderr, "ERROR: Error in mq_send() during unregister_client() to client %d\n", pid);
             fprintf(stderr,"Error");
         }
     }
@@ -374,19 +373,16 @@ static void *registry_handler(__attribute__((unused)) void *p) {
             case TINYFILE_CLIENT_REGISTER:
                 register_client(registry_entry);
                 printf("Received request from client %d\n", registry_entry->pid);
-//                printf("Client %d registered\n", registry_entry->pid);
                 break;
             case TINYFILE_CLIENT_UNREGISTER:
             case TINYFILE_CLIENT_CLOSE:
                 unregister_client(registry_entry->pid, 0);
                 printf("Received close request from client %d\n", registry_entry->pid);
-//                printf("Client %d unregistered\n", registry_entry->pid);
                 break;
             default:
                 fprintf(stderr, "ERROR: Unknown registry command from client %d\n", registry_entry->pid);
         }
     }
-
     return NULL;
 }
 
@@ -437,14 +433,13 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv) 
 
     char input[2];
 
-//    printf("Server initialized. Press q to quit.\n");
-    printf("Server Running.If you want to quit press ctrl+z\n");
+    printf("Server Running, if you want to quit press ctrl+z\n");
 
     while (input[0] != 'q') fgets(input, 2, stdin);
 
     exit_server();
 
-    printf("Server exited.\n");
+    printf("Server quit\n");
 
     return 0;
 }
