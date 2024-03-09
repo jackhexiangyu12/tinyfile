@@ -8,7 +8,6 @@
 #include <snappy-c/snappy.h>
 #include <tinyfile/params.h>
 
-
 mqd_t global_registry;
 pthread_t registry_thread;
 static int STOP_REGISTRY = 0;

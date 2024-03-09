@@ -30,6 +30,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="远程主机 (62ecc1e3-16e0-4982-b67a-ad410a2948d6)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.ZyvFqinJOt" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

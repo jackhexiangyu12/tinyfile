@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(utils/)
 
 # API Library
-add_library(tinyfile
+add_executable(tinyfile
         library.c
         utils/tinyfile/library.h
         utils/tinyfile/types.h)
@@ -24,6 +24,7 @@ add_executable(tinyfile-server
         utils/tinyfile/params.h)
 
 target_link_libraries(tinyfile-server rt pthread)
+
 
 # Client
 add_executable(tinyfile-client
