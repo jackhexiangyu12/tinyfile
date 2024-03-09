@@ -37,7 +37,7 @@ void append_client(client_list_t *node) {
     }
 }
 
-void remove_client(client_list_t *node) {
+void del_client(struct client_node *node) {
     if (node != NULL) {
         if (node->prev == NULL && node->next == NULL)
             clients = NULL;
@@ -53,7 +53,7 @@ void remove_client(client_list_t *node) {
     }
 }
 
-int compress_service(tinyfile_arg_t *arg) {
+int compress_s(tinyfile_arg_t *arg) {
     FILE *fp;
 
     /* Read source file to be compressed */
@@ -98,13 +98,6 @@ int compress_service(tinyfile_arg_t *arg) {
     fclose(fp);
 
     return 0;
-}
-
-client_list_t *find_client(int pid) {
-    client_list_t *list = clients;
-    while (list != NULL && list->client.pid != pid)
-        list = list->next;
-    return list;
 }
 
 void handle_request(tinyfile_request_t *req, client_t *client) {
@@ -165,33 +158,6 @@ void *service_worker(void *data) {
     }
 
     return NULL;
-}
-
-void start_worker_threads(client_t *client) {
-    client->stop_client_threads = 0;
-    int i;
-    for (i = 0; i < THREADS_PER_CLIENT; ++i)
-        pthread_create(&client->workers[i], NULL, service_worker, (void *) client);
-}
-
-void init_worker_threads(client_t *client) {
-    client->stop_client_threads = 0;
-    client->num_requests_started = 0;
-    client->num_requests_completed = 0;
-    client->threads_mutex = (pthread_mutex_t) PTHREAD_MUTEX_INITIALIZER;
-
-    start_worker_threads(client);
-}
-
-void join_worker_threads(client_t *client) {
-    client->stop_client_threads = 1;
-
-    /* Join all threads except myself */
-    int i;
-    for (i = 0; i < THREADS_PER_CLIENT; ++i) {
-        if (client->workers[i] != pthread_self())
-            pthread_join(client->workers[i], NULL);
-    }
 }
 
 void open_shm(tinyfile_registry_entry_t *registry_entry, client_t *client) {

@@ -44,15 +44,12 @@ typedef struct client_node {
     struct client_node *tail;
     struct client_node *next;
     struct client_node *prev;
-} client_list_t;
+} client_node;
 
 
-/* Client list management */
-client_list_t *find_client(int pid);
+void del_client(client_node *node);
 
-void remove_client(client_list_t *node);
-
-void append_client(client_list_t *node);
+void add_client(client_node *node);
 
 
 /* Client registration functions */
@@ -72,7 +69,7 @@ void exit_server();
 
 
 /* Server API functions */
-int compress_service(tinyfile_arg_t *arg);
+int compress_s(tinyfile_arg_t *arg);
 
 void handle_request(tinyfile_request_t *req, client_t *client);
 

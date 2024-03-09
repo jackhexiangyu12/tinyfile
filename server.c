@@ -8,23 +8,22 @@
 #include <snappy-c/snappy.h>
 #include <tinyfile/params.h>
 
-mqd_t global_registry;
-pthread_t registry_thread;
+mqd_t globalRegistry;
+pthread_t thread;
 static int STOP_REGISTRY = 0;
 
 /* Linked list of clients */
-client_list_t *clients = NULL;
+client_node *clients = NULL;
 
 //use LinkList to restore client
-void append_client(client_list_t *node) {
+void add_client(client_node *node) {
     if (clients == NULL) {
         node->next = NULL;
         node->prev = NULL;
         node->tail = node;
-
         clients = node;
     } else {
-        client_list_t *tail = clients->tail;
+        client_node *tail = clients->tail;
         node->prev = tail;
         node->next = NULL;
         node->tail = node;
@@ -33,7 +32,7 @@ void append_client(client_list_t *node) {
     }
 }
 
-void remove_client(client_list_t *node) {
+void del_client(client_node *node) {
     if (node != NULL) {
         if (node->prev == NULL && node->next == NULL)
             clients = NULL;
@@ -49,7 +48,7 @@ void remove_client(client_list_t *node) {
     }
 }
 
-int compress_service(tinyfile_arg_t *arg) {
+int compress_s(tinyfile_arg_t *arg) {
     FILE *fp;
 
     /* Read source file to be compressed */
@@ -96,13 +95,6 @@ int compress_service(tinyfile_arg_t *arg) {
     return 0;
 }
 
-client_list_t *find_client(int pid) {
-    client_list_t *list = clients;
-    while (list != NULL && list->client.pid != pid)
-        list = list->next;
-    return list;
-}
-
 void handle_request(tinyfile_request_t *req, client_t *client) {
     tinyfile_shared_entry_t *shared_entry = (tinyfile_shared_entry_t *) (client->shm_addr +
                                                                          req->entry_idx *
@@ -111,7 +103,7 @@ void handle_request(tinyfile_request_t *req, client_t *client) {
 
     switch (req->service) {
         case TINYFILE_COMPRESS:
-            if (compress_service(arg))
+            if (compress_s(arg))
                 fprintf(stderr, "ERROR: Error during file handling for client %d\n", req->pid);
             break;
         default:
@@ -161,33 +153,6 @@ void *service_worker(void *data) {
     }
 
     return NULL;
-}
-
-void start_worker_threads(client_t *client) {
-    client->stop_client_threads = 0;
-    int i;
-    for (i = 0; i < THREADS_PER_CLIENT; ++i)
-        pthread_create(&client->workers[i], NULL, service_worker, (void *) client);
-}
-
-void init_worker_threads(client_t *client) {
-    client->stop_client_threads = 0;
-    client->num_requests_started = 0;
-    client->num_requests_completed = 0;
-    client->threads_mutex = (pthread_mutex_t) PTHREAD_MUTEX_INITIALIZER;
-
-    start_worker_threads(client);
-}
-
-void join_worker_threads(client_t *client) {
-    client->stop_client_threads = 1;
-
-    /* Join all threads except myself */
-    int i;
-    for (i = 0; i < THREADS_PER_CLIENT; ++i) {
-        if (client->workers[i] != pthread_self())
-            pthread_join(client->workers[i], NULL);
-    }
 }
 
 void open_shm(tinyfile_registry_entry_t *registry_entry, client_t *client) {
@@ -247,7 +212,14 @@ void *resize_shm(void *data) {
 
     pthread_mutexattr_destroy(&attr);
 
-    join_worker_threads(client);
+    client->stop_client_threads = 1;
+
+    /* Join all threads except myself */
+    int i2;
+    for (i2 = 0; i2 < THREADS_PER_CLIENT; ++i2) {
+        if (client->workers[i2] != pthread_self())
+            pthread_join(client->workers[i2], NULL);
+    }
 
     memcpy(new_shm_addr, client->shm_addr, client->shm_size);
 
@@ -267,13 +239,19 @@ void *resize_shm(void *data) {
     client->shm_addr = new_shm_addr;
     client->shm_size = new_shm_size;
 
-    start_worker_threads(client);
+    client->stop_client_threads = 0;
+    int i1;
+    for (i1 = 0; i1 < THREADS_PER_CLIENT; ++i1)
+        pthread_create(&client->workers[i1], NULL, service_worker, (void *) client);
 
     return NULL;
 }
 
 int register_client(tinyfile_registry_entry_t *registry_entry) {
-    if (find_client(registry_entry->pid) != NULL)
+    client_node *list = clients;
+    while (list != NULL && list->client.pid != registry_entry->pid)
+        list = list->next;
+    if (list != NULL)
         /* Client already registered */
         return 0;
 
@@ -296,11 +274,19 @@ int register_client(tinyfile_registry_entry_t *registry_entry) {
 
     open_shm(registry_entry, &client);
 
-    client_list_t *node = malloc(sizeof(client_list_t));
+    client_node *node = malloc(sizeof(client_node));
     node->client = client;
-    append_client(node);
+    add_client(node);
 
-    init_worker_threads(&node->client);
+    (&node->client)->stop_client_threads = 0;
+    (&node->client)->num_requests_started = 0;
+    (&node->client)->num_requests_completed = 0;
+    (&node->client)->threads_mutex = (pthread_mutex_t) PTHREAD_MUTEX_INITIALIZER;
+
+    (&node->client)->stop_client_threads = 0;
+    int i;
+    for (i = 0; i < THREADS_PER_CLIENT; ++i)
+        pthread_create(&(&node->client)->workers[i], NULL, service_worker, (void *) &node->client);
 
     return 0;
 }
@@ -314,7 +300,10 @@ void cleanup_worker_threads(client_t *client) {
 }
 
 int unregister_client(int pid, int close) {
-    client_list_t *node = find_client(pid);
+    client_node *list = clients;
+    while (list != NULL && list->client.pid != pid)
+        list = list->next;
+    client_node *node = list;
     if (node == NULL) {
         /* Client already unregistered */
         return 0;
@@ -331,7 +320,7 @@ int unregister_client(int pid, int close) {
         }
     }
 
-    remove_client(node);
+    del_client(node);
 
     mq_close(client->send_q);
     mq_close(client->recv_q);
@@ -361,7 +350,7 @@ static void *registry_handler(__attribute__((unused)) void *p) {
         ts.tv_nsec += 100000000;
         ts.tv_sec = 0;
 
-        if (mq_timedreceive(global_registry, recv_buf, sizeof(tinyfile_registry_entry_t), NULL, &ts) == -1)
+        if (mq_timedreceive(globalRegistry, recv_buf, sizeof(tinyfile_registry_entry_t), NULL, &ts) == -1)
             continue;
 
         registry_entry = (tinyfile_registry_entry_t *) recv_buf;
@@ -383,20 +372,20 @@ static void *registry_handler(__attribute__((unused)) void *p) {
 }
 
 void exit_server() {
-    client_list_t *client_list = clients;
+    client_node *client_list = clients;
 
     while (client_list != NULL) {
         unregister_client(client_list->client.pid, 1);
         client_list = client_list->next;
     }
 
-    if (global_registry) {
-        mq_close(global_registry);
+    if (globalRegistry) {
+        mq_close(globalRegistry);
         mq_unlink(TINYFILE_REGISTRY_QUEUE);
     }
 
     STOP_REGISTRY = 1;
-    pthread_join(registry_thread, NULL);
+    pthread_join(thread, NULL);
 }
 
 void init_server() {
@@ -406,19 +395,19 @@ void init_server() {
     attr.mq_msgsize = sizeof(tinyfile_registry_entry_t);
     attr.mq_maxmsg = 10;
 
-    global_registry = mq_open(TINYFILE_REGISTRY_QUEUE, O_EXCL | O_CREAT | O_RDWR, S_IRUSR | S_IWUSR, &attr);
-    if (global_registry == (mqd_t) -1) {
+    globalRegistry = mq_open(TINYFILE_REGISTRY_QUEUE, O_EXCL | O_CREAT | O_RDWR, S_IRUSR | S_IWUSR, &attr);
+    if (globalRegistry == (mqd_t) -1) {
         if (errno == EEXIST) {
             /* Global registry queue already exists */
             mq_unlink(TINYFILE_REGISTRY_QUEUE);
-            global_registry = mq_open(TINYFILE_REGISTRY_QUEUE, O_EXCL | O_CREAT | O_RDWR, S_IRUSR | S_IWUSR, &attr);
+            globalRegistry = mq_open(TINYFILE_REGISTRY_QUEUE, O_EXCL | O_CREAT | O_RDWR, S_IRUSR | S_IWUSR, &attr);
         } else {
             fprintf(stderr, "FATAL: mq_open(TINYFILE_REGISTRY_QUEUE) failed in init_server()\n");
             exit(EXIT_FAILURE);
         }
     }
 
-    if (pthread_create(&registry_thread, NULL, registry_handler, NULL)) {
+    if (pthread_create(&thread, NULL, registry_handler, NULL)) {
         fprintf(stderr, "FATAL: pthread_create(&registry_thread) failed in init_server()\n");
         exit(EXIT_FAILURE);
     }
