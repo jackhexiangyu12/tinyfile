@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="远程主机 (62ecc1e3-16e0-4982-b67a-ad410a2948d6)" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="59.77.8.124">
         <serverdata>
@@ -33,10 +33,14 @@
       <paths name="远程主机 (62ecc1e3-16e0-4982-b67a-ad410a2948d6)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.ZyvFqinJOt" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/tmp.Z7nZ6xzL3s" local="$PROJECT_DIR$" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

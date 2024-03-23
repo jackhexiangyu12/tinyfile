@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/tinyfile/library.h
+types.h
+../include/tinyfile/types.h
+
+../include/tinyfile/types.h
+
+/tmp/tmp.Z7nZ6xzL3s/client.c
+stdio.h
+-
+string.h
+-
+getopt.h
+-
+stdlib.h
+-
+time.h
+-
+pthread.h
+-
+tinyfile/library.h
+/tmp/tmp.Z7nZ6xzL3s/tinyfile/library.h
+

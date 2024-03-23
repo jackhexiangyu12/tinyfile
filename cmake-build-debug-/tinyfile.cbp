@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="tinyfile"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tinyfile-client">
+				<Option output="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/tinyfile-client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG=0"/>
+					<Add directory="/tmp/tmp.Z7nZ6xzL3s/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 tinyfile-client"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tinyfile-client/fast">
+				<Option output="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/tinyfile-client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG=0"/>
+					<Add directory="/tmp/tmp.Z7nZ6xzL3s/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 tinyfile-client/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tinyfile-server">
+				<Option output="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/tinyfile-server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/tmp/tmp.Z7nZ6xzL3s/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 tinyfile-server"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tinyfile-server/fast">
+				<Option output="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/tinyfile-server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/tmp/tmp.Z7nZ6xzL3s/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 tinyfile-server/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tinyfile">
+				<Option output="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/libtinyfile.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG=0"/>
+					<Add directory="/tmp/tmp.Z7nZ6xzL3s/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 tinyfile"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tinyfile/fast">
+				<Option output="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/libtinyfile.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG=0"/>
+					<Add directory="/tmp/tmp.Z7nZ6xzL3s/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 tinyfile/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/client.c">
+			<Option target="tinyfile-client"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/include/snappy-c/snappy.c">
+			<Option target="tinyfile-server"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/include/snappy-c/snappy.h">
+			<Option target="tinyfile-server"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/include/tinyfile/library.h">
+			<Option target="tinyfile"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/include/tinyfile/messages.h">
+			<Option target="tinyfile-server"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/include/tinyfile/params.h">
+			<Option target="tinyfile-server"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/include/tinyfile/server.h">
+			<Option target="tinyfile-server"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/include/tinyfile/types.h">
+			<Option target="tinyfile-server"/>
+			<Option target="tinyfile"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/library.c">
+			<Option target="tinyfile"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/server.c">
+			<Option target="tinyfile-server"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Z7nZ6xzL3s/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

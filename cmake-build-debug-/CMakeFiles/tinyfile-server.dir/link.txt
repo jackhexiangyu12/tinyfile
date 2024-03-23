@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/tinyfile-server.dir/server.c.o CMakeFiles/tinyfile-server.dir/include/snappy-c/snappy.c.o  -o tinyfile-server  -lrt -lpthread 
