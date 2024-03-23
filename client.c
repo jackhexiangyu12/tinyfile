@@ -30,25 +30,30 @@ int main(int argc, char **argv) {
     while ((c = getopt_long(argc, argv, "f:l:s:", long_options, &option_index)) != -1) {
         switch (c) {
             case 0:
-                printf("Using option %s", long_options[option_index].name);
+//                printf("Using option %s", long_options[option_index].name);
+                printf("%s is ", long_options[option_index].name);
                 if (optarg)
-                    printf(" with arg %s", optarg);
+//                    printf(" with arg %s", optarg);
+                    printf("\"%s\"", optarg);
                 printf("\n");
                 break;
 
             case 'f':
-                printf("Using option --file with value %s\n", optarg);
+//                printf("Using option --file with value %s\n", optarg);
+                printf("file is \"%s\"\n", optarg);
                 strcpy(file_path, optarg);
                 break;
 
             case 'l':
-                printf("Using option --files with value %s\n", optarg);
+//                printf("Using option --files with value %s\n", optarg);
+                printf("files is \"%s\"\n", optarg);
                 file_list = 1;
                 strcpy(file_list_path, optarg);
                 break;
 
             case 's':
-                printf("Using option --state with value %s\n", optarg);
+//                printf("Using option --state with value %s\n", optarg);
+                printf("state is \"%s\"\n", optarg);
                 if (strcmp(optarg, "ASYNC") == 0)
                     call_method = 'a';
                 else if (strcmp(optarg, "SYNC") == 0)
@@ -57,13 +62,15 @@ int main(int argc, char **argv) {
                     printf("Unexpected state value\n");
                 break;
 
-            case 'm':
-                printf("Using option --sms_size with value %s\n", optarg);
-                tinyfile_set_shm_size(strtol(optarg, &ptr, 10));
-                break;
+//            case 'm':
+////                printf("Using option --sms_size with value %s\n", optarg);
+//                printf("sms_size is \"%s\"\n", optarg);
+//                tinyfile_set_shm_size(strtol(optarg, &ptr, 10));
+//                break;
 
             default:
-                printf("Required options (--file or --files), --state, --sms_size");
+//                printf("Required options (--file or --files), --state");
+                printf("./sample_app --file(s) FILE --state (A)SYNC\n");
                 abort();
         }
     }
@@ -134,14 +141,8 @@ int main(int argc, char **argv) {
         diff.tv_nsec = ts2.tv_nsec - ts1.tv_nsec;
         diff_msec = diff.tv_sec * 1000 + (long) (diff.tv_nsec / 1000000.0);
 
-        if (call_method == 'a')
-            printf("Time to perform %d async requests: %ld millisecs.\n", lines, diff_msec);
-        else
-            printf("Time to perform %d sync requests: %ld millisecs.\n", lines, diff_msec);
-
-        // printf("Compressed files:\n");
-        // for (j = 0; j < lines; ++j)
-        //    printf("%s\n", out[j].compressed_file_path);
+        printf("CST is %ld ms\n", diff_msec);
+        printf("Compressed files are in the same directory as the source files\n");
     } else {
         /* Single file compression request. */
 
@@ -166,12 +167,9 @@ int main(int argc, char **argv) {
         diff.tv_nsec = ts2.tv_nsec - ts1.tv_nsec;
         diff_msec = diff.tv_sec * 1000 + (long) (diff.tv_nsec / 1000000.0);
 
-        if (call_method == 'a')
-            printf("Time to perform single async request: %ld millisecs.\n", diff_msec);
-        else
-            printf("Time to perform single sync requests: %ld millisecs.\n", diff_msec);
 
-        printf("Compressed file: %s\n", out.compressed_file_path);
+        printf("CST is %ld ms\n", diff_msec);
+        printf("Compressed file is in the same directory as the source file\n");
     }
 
     tinyfile_exit();
