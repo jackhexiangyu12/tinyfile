@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
         switch (c) {
             case 0:
 //                printf("Using option %s", long_options[option_index].name);
-                printf("%s is ", long_options[option_index].name);
+                printf("%s  is ", long_options[option_index].name);
                 if (optarg)
 //                    printf(" with arg %s", optarg);
                     printf("\"%s\"", optarg);

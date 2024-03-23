@@ -420,7 +420,8 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv) 
 
     exit_server();
 
-    printf("Server quit\n");
+    printf("Server quit \n");
+
 
     return 0;
 }
