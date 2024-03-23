@@ -1,0 +1,5 @@
+/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/CMakeFiles/rebuild_cache.dir
+/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/CMakeFiles/edit_cache.dir
+/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/CMakeFiles/tinyfile-client.dir
+/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/CMakeFiles/tinyfile-server.dir
+/tmp/tmp.Z7nZ6xzL3s/cmake-build-debug-/CMakeFiles/tinyfile.dir

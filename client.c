@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <pthread.h>
-#include "tinyfile/api.h"
+#include "tinyfile/library.h"
 
 void *async_join(void *entry_idx) {
     /* Join the async requests if computation done. */

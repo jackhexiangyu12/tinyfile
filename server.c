@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include <tinyfile/params.h>
-#include <tinyfile/server.h>
+#include "tinyfile/params.h"
+#include "tinyfile/server.h"
 #include <sys/mman.h>
 #include <string.h>
 #include <ftw.h>
 
-#include <snappy-c/snappy.h>
+#include "snappy-c/snappy.h"
 
 mqd_t global_registry;
 pthread_t registry_thread;
